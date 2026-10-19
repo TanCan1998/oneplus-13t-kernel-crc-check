@@ -1,12 +1,16 @@
 name: crc-probe
 
-# 在免费 runner 上编译社区树，判定其 ABI 能否与一加 13T 出厂 vendor 模块配套。
+# 用一加 13T 设备实测 .config 编译社区树，判定其 ABI 能否与出厂 vendor 模块配套。
 # 纯离线判定，不涉及任何设备操作。
 #
-# 关于下载：runner 位于海外机房，clone github.com 与 apt 均为同机房直连，
-# 因此不使用任何加速前缀（gh-proxy 之类只会绕路变慢）。
-# CRC 由 genksyms 依据源码结构生成，与编译器版本无关，
-# 故不下载 1 GB 的 Android clang，直接用 runner 自带 clang-18。
+# 关于下载：runner 在海外机房，clone github.com 与 apt 均为同机房直连，
+# 不使用任何加速前缀（gh-proxy 只会绕路变慢）。
+# CRC 由 genksyms 依据源码结构生成，与编译器版本和 debug info 无关。
+#
+# 两处刻意调整，均不影响 CRC 与符号存在性判定：
+# 1) TRIM_UNUSED_KSYMS 关闭 —— 量产版靠私有 abi_symbollist.raw 白名单裁剪导出集，
+#    我们没有那份白名单；若保持开启，符号会被裁光，判定失真。
+# 2) DEBUG_INFO 关闭 —— 只为提速，CRC 由源码结构决定，与调试信息无关。
 
 on:
   workflow_dispatch:
@@ -15,24 +19,22 @@ on:
         description: '社区树分支'
         required: false
         default: 'oneplus/sm8750_b_16.0.0_oneplus_13_6.6.118'
-      target:
-        description: '编译目标（all 才会生成 Module.symvers）'
-        required: false
-        default: 'all'
 
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
+      - name: 检出探测仓库
+        uses: actions/checkout@v4
+
       - name: 腾出磁盘
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
           sudo mkdir -p /mnt/work
           sudo chown "$(id -u):$(id -g)" /mnt/work
           df -h / /mnt
-          echo "node: $(node --version)"
-          echo "cpu: $(nproc)   mem: $(free -g | awk '/^Mem/{print $2}')G"
+          echo "node: $(node --version)   cpu: $(nproc)   mem: $(free -g | awk '/^Mem/{print $2}')G"
 
       - name: 安装编译依赖
         run: |
@@ -41,7 +43,6 @@ jobs:
             clang lld llvm gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
             bison flex libelf-dev libssl-dev bc cpio zip rsync dwarves git python3
           clang --version | head -1
-          aarch64-linux-gnu-ld --version | head -1
 
       - name: 克隆社区树
         run: |
@@ -51,25 +52,21 @@ jobs:
           cd common
           git log -1 --format='%H  %ci  %s'
           du -sh /mnt/work/common
-          df -h /mnt | tail -1
 
-      - name: 注入 HMBIRD 配置
+      - name: 用设备实测配置生成 .config
         run: |
           cd /mnt/work/common
-          # 设备实测 .config 中 CONFIG_HMBIRD_SCHED=y；官方 OSS 源码无该实现，社区树有
-          printf '\nCONFIG_HMBIRD_SCHED=y\nCONFIG_MODULE_SCMVERSION=y\n' >> arch/arm64/configs/gki_defconfig
-          tail -4 arch/arm64/configs/gki_defconfig
-          sed -i 's/check_defconfig//' build.config.gki || true
-
-      - name: 生成 .config
-        run: |
-          cd /mnt/work/common
+          mkdir -p out
+          cp "$GITHUB_WORKSPACE/device.config" out/.config
+          # 关掉会导致符号被裁剪/编译变慢的两项
+          sed -i 's/^CONFIG_TRIM_UNUSED_KSYMS=y/# CONFIG_TRIM_UNUSED_KSYMS is not set/' out/.config
+          sed -i 's/^CONFIG_DEBUG_INFO=y/CONFIG_DEBUG_INFO_NONE=y/' out/.config
           make LLVM=-18 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- \
             CROSS_COMPILE_ARM32=aarch64-linux-gnu- \
-            CC=clang LD=ld.lld HOSTCC=clang HOSTLD=ld.lld \
-            O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error gki_defconfig
-          echo '--- 关键配置是否生效 ---'
-          grep -E 'HMBIRD|MODVERSIONS|TRIM_UNUSED_KSYMS' out/.config || echo '(未找到，需检查 Kconfig 依赖)'
+            CC=clang LD=ld.lld HOSTCC=clang HOSTLD=llvm-objcopy HOSTLD=ld.lld \
+            O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error olddefconfig 2>&1 | tail -20
+          echo '--- 关键配置 ---'
+          grep -E 'HMBIRD|MODVERSIONS|TRIM_UNUSED|DEBUG_INFO=' out/.config || echo '(none)'
 
       - name: 编译
         run: |
@@ -77,8 +74,7 @@ jobs:
           make -j"$(nproc)" LLVM=-18 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- \
             CROSS_COMPILE_ARM32=aarch64-linux-gnu- \
             CC=clang LD=ld.lld HOSTCC=clang HOSTLD=ld.lld \
-            O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error \
-            ${{ inputs.target }}
+            O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error all
           echo '--- 产物 ---'
           ls -l out/vmlinux out/Module.symvers out/arch/arm64/boot/Image 2>/dev/null || true
           df -h /mnt | tail -1
@@ -91,8 +87,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: crc-probe-result
-          path: |
-            /mnt/work/common/out/Module.symvers
-            /mnt/work/common/out/.config
+          path: /mnt/work/common/out/Module.symvers
           if-no-files-found: warn
           retention-days: 7
