@@ -1,0 +1,1053 @@
+{
+ "device": "OnePlus 13T / PKX110",
+ "firmware": "PKX110_16.0.10.500(CN01)",
+ "purpose": "判定社区树编译产物能否与出厂 vendor 模块配套：符号必须齐全，CRC 必须一致",
+ "source_of_truth": "出厂 vendor_boot_a 内 514 个第一阶段模块的 __versions 段",
+ "crc_expectations": {
+  "walt_rq": {
+   "expected": "0xaf4e0da5",
+   "stock_module": "oplus_bsp_close_loop.ko",
+   "oss_provides": "0x9dc93687"
+  },
+  "get_oplus_rq": {
+   "expected": "0xfcc2a2c2",
+   "stock_module": "oplus_bsp_frame_boost.ko",
+   "oss_provides": "0x8f15bfff"
+  }
+ },
+ "missing_symbol_count": 258,
+ "missing_symbols": [
+  {
+   "symbol": "CTP_SPI_READ",
+   "modules": 5
+  },
+  {
+   "symbol": "CTP_SPI_WRITE",
+   "modules": 5
+  },
+  {
+   "symbol": "GetFileName",
+   "modules": 1
+  },
+  {
+   "symbol": "__traceiter_cam_tracing_mark_write",
+   "modules": 1
+  },
+  {
+   "symbol": "__tracepoint_android_vh_check_preempt_curr_scx",
+   "modules": 1
+  },
+  {
+   "symbol": "__tracepoint_android_vh_scx_sched_lpm_disallowed_time",
+   "modules": 1
+  },
+  {
+   "symbol": "__tracepoint_android_vh_scx_select_cpu_dfl",
+   "modules": 1
+  },
+  {
+   "symbol": "__tracepoint_cam_tracing_mark_write",
+   "modules": 1
+  },
+  {
+   "symbol": "after_magcvr_core_init",
+   "modules": 3
+  },
+  {
+   "symbol": "alloc_for_magcvr",
+   "modules": 3
+  },
+  {
+   "symbol": "black_screen_timer_restart",
+   "modules": 1
+  },
+  {
+   "symbol": "bright_screen_timer_restart",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_actuator_internal_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_actuator_power_down",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_actuator_power_up",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_actuator_subdev_core_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_cci_control_interface",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_cci_get_subdev",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_eeprom_subdev_core_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_handle_mem_ptr",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_mem_get_cpu_buf",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_mem_put_cpu_buf",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_driver_cmd",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_get_i3c_completion",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_internal_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_pkt_parse",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_power_down",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_shutdown",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_ois_subdev_core_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_packet_util_validate_cmd_desc",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_packet_util_validate_packet",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_print_log",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_req_mgr_is_open",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_req_mgr_is_shutdown",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_req_mgr_ordered_sd_list",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_apply_settings",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_core_power_up",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_driver_cmd",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_get_dpc_data",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_match_id",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_power_down",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_power_up",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_read_qsc",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_subdev_core_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_util_get_current_qtimer_ns",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_sensor_util_power_down",
+   "modules": 1
+  },
+  {
+   "symbol": "cam_soc_util_get_dt_properties",
+   "modules": 1
+  },
+  {
+   "symbol": "camera_io_dev_read",
+   "modules": 1
+  },
+  {
+   "symbol": "camera_io_dev_write",
+   "modules": 1
+  },
+  {
+   "symbol": "camera_io_dev_write_continuous",
+   "modules": 1
+  },
+  {
+   "symbol": "camera_io_init",
+   "modules": 1
+  },
+  {
+   "symbol": "camera_io_release",
+   "modules": 1
+  },
+  {
+   "symbol": "common_touch_data_alloc",
+   "modules": 15
+  },
+  {
+   "symbol": "common_touch_data_free",
+   "modules": 15
+  },
+  {
+   "symbol": "cur_tp_index",
+   "modules": 1
+  },
+  {
+   "symbol": "d_oplus_locking",
+   "modules": 1
+  },
+  {
+   "symbol": "debug_level",
+   "modules": 3
+  },
+  {
+   "symbol": "delete_request",
+   "modules": 1
+  },
+  {
+   "symbol": "display_esd_check_enable_bytouchpanel",
+   "modules": 1
+  },
+  {
+   "symbol": "dump_tof_registers",
+   "modules": 1
+  },
+  {
+   "symbol": "esd_handle_switch",
+   "modules": 3
+  },
+  {
+   "symbol": "fault_injection_handle",
+   "modules": 2
+  },
+  {
+   "symbol": "firmware_request_from_smcinvoke",
+   "modules": 1
+  },
+  {
+   "symbol": "focal_auto_test",
+   "modules": 5
+  },
+  {
+   "symbol": "focal_black_screen_test",
+   "modules": 1
+  },
+  {
+   "symbol": "focal_create_sysfs",
+   "modules": 1
+  },
+  {
+   "symbol": "focal_create_sysfs_spi",
+   "modules": 4
+  },
+  {
+   "symbol": "free_zram_is_ok",
+   "modules": 1
+  },
+  {
+   "symbol": "fts_create_proc",
+   "modules": 1
+  },
+  {
+   "symbol": "g_opt_enable",
+   "modules": 1
+  },
+  {
+   "symbol": "g_sched_enable",
+   "modules": 1
+  },
+  {
+   "symbol": "game_bwmon_on_frame_event",
+   "modules": 1
+  },
+  {
+   "symbol": "game_update_geas_bwmon_params",
+   "modules": 1
+  },
+  {
+   "symbol": "game_update_geas_fdrive_params",
+   "modules": 1
+  },
+  {
+   "symbol": "game_update_geas_gpu_params",
+   "modules": 1
+  },
+  {
+   "symbol": "game_update_geas_memlat_params",
+   "modules": 1
+  },
+  {
+   "symbol": "geas_update_gpu_params",
+   "modules": 1
+  },
+  {
+   "symbol": "get_camera_provider_pid",
+   "modules": 1
+  },
+  {
+   "symbol": "get_client_env_object",
+   "modules": 2
+  },
+  {
+   "symbol": "get_current_shell_temp",
+   "modules": 1
+  },
+  {
+   "symbol": "get_global_partition_info",
+   "modules": 1
+  },
+  {
+   "symbol": "get_mem_cgroup_app_name",
+   "modules": 1
+  },
+  {
+   "symbol": "get_mem_cgroup_app_uid",
+   "modules": 2
+  },
+  {
+   "symbol": "get_next_memcg",
+   "modules": 2
+  },
+  {
+   "symbol": "get_next_memcg_break",
+   "modules": 2
+  },
+  {
+   "symbol": "get_oem_verified_boot_state",
+   "modules": 5
+  },
+  {
+   "symbol": "get_skb_dpi_id",
+   "modules": 3
+  },
+  {
+   "symbol": "get_test_item_info",
+   "modules": 4
+  },
+  {
+   "symbol": "goodix_auto_test",
+   "modules": 2
+  },
+  {
+   "symbol": "goodix_print_differ",
+   "modules": 2
+  },
+  {
+   "symbol": "goodix_remove_proc",
+   "modules": 2
+  },
+  {
+   "symbol": "gtx8_deinit_tool_node",
+   "modules": 2
+  },
+  {
+   "symbol": "gtx8_init_tool_node",
+   "modules": 2
+  },
+  {
+   "symbol": "hbp_dev_healthinfo_report",
+   "modules": 2
+  },
+  {
+   "symbol": "hbp_dev_power_type_ctrl",
+   "modules": 2
+  },
+  {
+   "symbol": "hbp_exception_report",
+   "modules": 2
+  },
+  {
+   "symbol": "hbp_register_devices",
+   "modules": 3
+  },
+  {
+   "symbol": "hdcp1_deinit",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_feature_supported",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_init",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_ops_notify",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_set_enc",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_start",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp1_stop",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_app_comm",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_close_stream",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_deinit",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_feature_supported",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_force_encryption",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_init",
+   "modules": 1
+  },
+  {
+   "symbol": "hdcp2_open_stream",
+   "modules": 1
+  },
+  {
+   "symbol": "ilitek_auto_test",
+   "modules": 1
+  },
+  {
+   "symbol": "ilitek_black_screen_test",
+   "modules": 1
+  },
+  {
+   "symbol": "ipclite_global_test_and_clear_bit",
+   "modules": 1
+  },
+  {
+   "symbol": "ipclite_global_test_and_set_bit",
+   "modules": 1
+  },
+  {
+   "symbol": "ipclite_msg_send",
+   "modules": 1
+  },
+  {
+   "symbol": "ipclite_recover",
+   "modules": 1
+  },
+  {
+   "symbol": "ipclite_register_client",
+   "modules": 1
+  },
+  {
+   "symbol": "ir_register_device",
+   "modules": 1
+  },
+  {
+   "symbol": "ir_unregister_device",
+   "modules": 1
+  },
+  {
+   "symbol": "is_fpga_work_okay",
+   "modules": 1
+  },
+  {
+   "symbol": "is_oem_unlocked",
+   "modules": 5
+  },
+  {
+   "symbol": "keyevent_register_notifier",
+   "modules": 1
+  },
+  {
+   "symbol": "keyevent_unregister_notifier",
+   "modules": 1
+  },
+  {
+   "symbol": "magcvr_core_init",
+   "modules": 3
+  },
+  {
+   "symbol": "match_from_cmdline",
+   "modules": 3
+  },
+  {
+   "symbol": "mmrm_client_check_scaling_supported",
+   "modules": 1
+  },
+  {
+   "symbol": "mmrm_client_deregister",
+   "modules": 1
+  },
+  {
+   "symbol": "mmrm_client_register",
+   "modules": 1
+  },
+  {
+   "symbol": "mmrm_client_set_value",
+   "modules": 1
+  },
+  {
+   "symbol": "msm_camera_fill_vreg_params",
+   "modules": 1
+  },
+  {
+   "symbol": "msm_ext_disp_deregister_intf",
+   "modules": 1
+  },
+  {
+   "symbol": "msm_ext_disp_register_intf",
+   "modules": 1
+  },
+  {
+   "symbol": "msm_hw_fence_register_error_cb",
+   "modules": 1
+  },
+  {
+   "symbol": "msm_hw_fence_update_txq_error",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__dns_meta_data__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__dns_normal_data__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__message_header__descriptor",
+   "modules": 8
+  },
+  {
+   "symbol": "netlink__proto__notify_asc_ctrl__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_dns_meta_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_dns_normal_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_dns_race_record_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_dns_reserve_record__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_dns_rtx_record_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_fast_bwe_result__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_hba_ctrl__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_hbi_closed__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_hbi_identified__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_message__descriptor",
+   "modules": 7
+  },
+  {
+   "symbol": "netlink__proto__notify_message__get_packed_size",
+   "modules": 7
+  },
+  {
+   "symbol": "netlink__proto__notify_message__pack",
+   "modules": 7
+  },
+  {
+   "symbol": "netlink__proto__notify_msc_block__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_network_snapshot__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_network_snapshot_app__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_network_snapshot_net__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_network_snapshot_stream__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_sk_predict_result__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_spi_result__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_vip_task_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__notify_vip_task_record_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__response_cubic_info__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__response_message__descriptor",
+   "modules": 5
+  },
+  {
+   "symbol": "netlink__proto__response_message__get_packed_size",
+   "modules": 5
+  },
+  {
+   "symbol": "netlink__proto__response_message__pack",
+   "modules": 5
+  },
+  {
+   "symbol": "netlink__proto__response_tcp_bbr_data__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__response_tcp_bbr_item__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__response_tcp_cubic_item__init",
+   "modules": 1
+  },
+  {
+   "symbol": "netlink__proto__response_tcp_syn_info__descriptor",
+   "modules": 1
+  },
+  {
+   "symbol": "notify_netlink_event",
+   "modules": 7
+  },
+  {
+   "symbol": "nvt_auto_test",
+   "modules": 4
+  },
+  {
+   "symbol": "nvt_black_screen_autotest",
+   "modules": 4
+  },
+  {
+   "symbol": "nvt_flash_proc_init",
+   "modules": 4
+  },
+  {
+   "symbol": "oem_qmi_common_req",
+   "modules": 1
+  },
+  {
+   "symbol": "operate_mode_switch",
+   "modules": 1
+  },
+  {
+   "symbol": "oplus_cam_actuator_construct_default_power_setting",
+   "modules": 1
+  },
+  {
+   "symbol": "oplus_hall_irq_handler",
+   "modules": 4
+  },
+  {
+   "symbol": "oplus_hall_register_notifier",
+   "modules": 1
+  },
+  {
+   "symbol": "oplus_ir_to_hw_data",
+   "modules": 1
+  },
+  {
+   "symbol": "oplus_register_hall",
+   "modules": 5
+  },
+  {
+   "symbol": "phx_is_boot_from_normal",
+   "modules": 1
+  },
+  {
+   "symbol": "phx_is_normal_mode",
+   "modules": 1
+  },
+  {
+   "symbol": "phx_is_system_server_init_start",
+   "modules": 1
+  },
+  {
+   "symbol": "phx_is_userdebug",
+   "modules": 1
+  },
+  {
+   "symbol": "preconfig_power_control",
+   "modules": 1
+  },
+  {
+   "symbol": "reconfig_power_control",
+   "modules": 1
+  },
+  {
+   "symbol": "register_common_touch_device",
+   "modules": 15
+  },
+  {
+   "symbol": "register_netlink_request",
+   "modules": 8
+  },
+  {
+   "symbol": "register_scx_sched_gki_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "reset_healthinfo_time_counter",
+   "modules": 12
+  },
+  {
+   "symbol": "sched_ravg_window",
+   "modules": 2
+  },
+  {
+   "symbol": "set_pwk_flag",
+   "modules": 1
+  },
+  {
+   "symbol": "shutdown_force_panic",
+   "modules": 1
+  },
+  {
+   "symbol": "smmu_proxy_get_csf_version",
+   "modules": 1
+  },
+  {
+   "symbol": "smmu_proxy_switch_sid",
+   "modules": 1
+  },
+  {
+   "symbol": "spec_sync_wait_bind_array",
+   "modules": 1
+  },
+  {
+   "symbol": "ssc_fb_set_screen_status",
+   "modules": 1
+  },
+  {
+   "symbol": "synaptics_auto_test",
+   "modules": 3
+  },
+  {
+   "symbol": "synaptics_black_screen_test",
+   "modules": 1
+  },
+  {
+   "symbol": "synaptics_create_proc",
+   "modules": 3
+  },
+  {
+   "symbol": "synaptics_parse_header_v2",
+   "modules": 2
+  },
+  {
+   "symbol": "synx_create",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_enable_resources",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_hwfence_enable_resources",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_hwfence_init_interops",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_hwfence_init_ops",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_hwfence_initialize",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_hwfence_recover",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_import",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_initialize",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_recover",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_release",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_signal",
+   "modules": 1
+  },
+  {
+   "symbol": "synx_uninitialize",
+   "modules": 1
+  },
+  {
+   "symbol": "theia_send_event",
+   "modules": 1
+  },
+  {
+   "symbol": "threeaxis_hall_irq_handler",
+   "modules": 1
+  },
+  {
+   "symbol": "touch_i2c_read",
+   "modules": 3
+  },
+  {
+   "symbol": "touch_i2c_read_block",
+   "modules": 1
+  },
+  {
+   "symbol": "touch_i2c_read_byte",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_i2c_write",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_i2c_write_block",
+   "modules": 1
+  },
+  {
+   "symbol": "touch_i2c_write_byte",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_pen_press_debounce",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_pen_press_smooth",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_pen_press_smooth_pre",
+   "modules": 2
+  },
+  {
+   "symbol": "touch_pen_up_optimize",
+   "modules": 2
+  },
+  {
+   "symbol": "tp_debug",
+   "modules": 18
+  },
+  {
+   "symbol": "tp_exception_report",
+   "modules": 4
+  },
+  {
+   "symbol": "tp_fw_auto_reset_handle",
+   "modules": 2
+  },
+  {
+   "symbol": "tp_healthinfo_report",
+   "modules": 15
+  },
+  {
+   "symbol": "tp_judge_ic_match",
+   "modules": 15
+  },
+  {
+   "symbol": "tp_judge_ic_match_commandline",
+   "modules": 2
+  },
+  {
+   "symbol": "tp_pm_resume",
+   "modules": 15
+  },
+  {
+   "symbol": "tp_pm_suspend",
+   "modules": 15
+  },
+  {
+   "symbol": "tp_powercontrol_avdd",
+   "modules": 8
+  },
+  {
+   "symbol": "tp_powercontrol_vddi",
+   "modules": 8
+  },
+  {
+   "symbol": "tp_shutdown",
+   "modules": 8
+  },
+  {
+   "symbol": "tp_test_write",
+   "modules": 16
+  },
+  {
+   "symbol": "tp_touch_btnkey_release",
+   "modules": 12
+  },
+  {
+   "symbol": "tp_util_get_vendor",
+   "modules": 2
+  },
+  {
+   "symbol": "trikey_dev_get_panel",
+   "modules": 1
+  },
+  {
+   "symbol": "uim_qmi_power_down_req",
+   "modules": 1
+  },
+  {
+   "symbol": "uim_qmi_power_up_req",
+   "modules": 1
+  },
+  {
+   "symbol": "unregister_common_touch_device",
+   "modules": 10
+  },
+  {
+   "symbol": "unregister_magcvr_core",
+   "modules": 3
+  },
+  {
+   "symbol": "unregister_netlink_request",
+   "modules": 6
+  },
+  {
+   "symbol": "waltgov_cb_data",
+   "modules": 2
+  },
+  {
+   "symbol": "write_device_info",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_compact_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_create_pool_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_destroy_pool_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_free_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_get_total_pages_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_huge_class_size_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_lookup_class_index_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_malloc_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_map_object_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_pool_stats_oplus",
+   "modules": 1
+  },
+  {
+   "symbol": "zs_unmap_object_oplus",
+   "modules": 1
+  }
+ ]
+}
